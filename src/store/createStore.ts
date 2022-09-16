@@ -1,6 +1,4 @@
-import { Reducer } from './types/createSTore'
-
-function createHeduxStore<T>(initState: T, { reducer }: Reducer<T>) {
+function createStore<T>(initState: T) {
   let state: T = initState
 
   const getState = (): T => {
@@ -8,10 +6,10 @@ function createHeduxStore<T>(initState: T, { reducer }: Reducer<T>) {
   }
 
   const dispatch = (payload?: { [k: string]: any }) => {
-    state = reducer(state, { payload })
+    state = { ...state, payload }
   }
 
   return { getState, dispatch }
 }
 
-export default createHeduxStore
+export default createStore
