@@ -2,7 +2,7 @@ import axios from 'axios'
 
 interface FetcherRequestConfig {
   headers?: Record<string, string | number | boolean>
-  baseUrl?: string
+  baseURL?: string
 }
 
 export const createFetcher = (config: FetcherRequestConfig) => {
