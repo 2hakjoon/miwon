@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "1번 게시글 제목",
+      "contents": "1번 게시글 내용",
+      "comments": [
+        { "id": 1, "contents": "1번 게시글 첫번째 댓글" },
+        { "id": 2, "contents": "1번 게시글 두번째 댓글" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "2번 게시글 제목",
+      "contents": "2번 게시글 내용",
+      "comments": [
+        { "id": 3, "contents": "2번 게시글 첫번째 댓글" },
+        { "id": 4, "contents": "2번 게시글 두번째 댓글" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "3번 게시글 제목",
+      "contents": "3번 게시글 내용",
+      "comments": [
+        { "id": 5, "contents": "3번 게시글 첫번째 댓글" },
+        { "id": 6, "contents": "3번 게시글 두번째 댓글" }
+      ]
+    }
+  ]
+}
