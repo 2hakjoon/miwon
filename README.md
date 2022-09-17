@@ -8,6 +8,11 @@ Miwon is oriented to intergrated state container with api fetching and cache nor
 
 
 ## Todo
- - [x] createStore
- - [x] fetch
- - [ ] normalizer
+ - [ ] store
+    - [x] createStore
+    - [ ] subscribe
+    - [ ] unsubscribe
+ - [ ] fetcher
+    - [x] createFetcher
+    - [ ] errorHandling
+ - [x] normalizer
