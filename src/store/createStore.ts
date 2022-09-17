@@ -6,7 +6,7 @@ function createStore<T>(initState: T) {
   }
 
   const dispatch = (payload?: { [k: string]: any }) => {
-    state = { ...state, payload }
+    state = { ...state, ...payload }
   }
 
   return { getState, dispatch }
