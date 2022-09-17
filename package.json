@@ -1,13 +1,27 @@
 {
   "name": "miwon",
   "version": "1.0.0",
-  "description": "",
+  "description": "State container with cache normalizing",
+  "homepage": "https://github.com/2hakjoon/miwon",
+  "repository": "https://github.com/2hakjoon/miwon",
+  "bugs": "https://github.com/2hakjoon/miwon/issuses",
+  "license": "MIT",
   "main": "main.js",
+  "keywords": [
+    "state",
+    "flux",
+    "store",
+    "normalized cache",
+    "cahce api"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Hak Joon Lee",
+    "email": "2hakjoon@gmail.com",
+    "url": "https://github.com/2hakjoon/miwon"
+  },
   "devDependencies": {
     "eslint": "^8.23.1",
     "prettier": "^2.7.1",
