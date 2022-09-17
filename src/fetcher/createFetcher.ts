@@ -1,11 +1,7 @@
 import axios from 'axios'
+import { FetcherRequestConfig } from '../types/createFetcher'
 
-interface FetcherRequestConfig {
-  headers?: Record<string, string | number | boolean>
-  baseURL?: string
-}
-
-export const createFetcher = (config: FetcherRequestConfig) => {
+const createFetcher = (config: FetcherRequestConfig) => {
   const fetch = axios.create(config)
 
   return {
@@ -21,3 +17,5 @@ export const createFetcher = (config: FetcherRequestConfig) => {
       fetch.put(url, body).then(res => res.data)
   }
 }
+
+export default createFetcher
