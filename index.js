@@ -1,11 +1,11 @@
-const { normalize, schema } = require('normalizr')
-const { createFetcher } = require('./dist/fetcher/fetcher')
-const { default: createStore } = require('./dist/store/createStore')
+const { schema, normalize } = require('normalizr')
+const { default: addMiwon } = require('./dist/addMiwon')
 
-const store = createStore()
-
-const fetcher = createFetcher({
-  baseURL: 'https://my-json-server.typicode.com'
+const { getState, setState, miwonQuery, miwonMutation } = addMiwon({
+  initVal: {},
+  config: {
+    baseURL: 'https://my-json-server.typicode.com'
+  }
 })
 
 const postsNormalizer = res => {
@@ -16,15 +16,9 @@ const postsNormalizer = res => {
   })
 
   const posts = new schema.Array(postEntity)
-
   return normalize(res, posts).entities
 }
 
-const fetchHander = async () => {
-  const res = await fetcher.get('/2hakjoon/miwon/posts')
-
-  store.setState(postsNormalizer(res))
-  console.log(store.getState())
-}
-
-fetchHander()
+miwonQuery('/2hakjoon/miwon/posts', postsNormalizer).then(() =>
+  console.log(getState())
+)
