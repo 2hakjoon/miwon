@@ -1,3 +1,4 @@
+export * from 'normalizr'
 export * from './addMiwon'
 
 export { AddMiwon } from './types/addMiwon'
