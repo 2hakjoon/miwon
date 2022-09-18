@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "ES2015",
     "declaration": true,
+    "declarationDir": "./src/types",
     "outDir": "./dist",
     "strict": true,
-    "typeRoots": ["./types", "./node_modules/@types"], // 보통 types 폴더를 만들어 타입 정의
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "./dist"]
