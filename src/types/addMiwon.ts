@@ -1,6 +1,6 @@
 import { FetcherRequestConfig } from './createFetcher'
 
 export interface AddMiwon {
-  config: FetcherRequestConfig
+  config?: FetcherRequestConfig
   initVal?: { [k: string]: any }
 }

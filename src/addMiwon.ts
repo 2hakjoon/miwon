@@ -3,7 +3,7 @@ import createStore from './store/createStore'
 import subscription from './subscription/subscription'
 import { AddMiwon } from './types/addMiwon'
 
-const addMiwon = ({ initVal, config }: AddMiwon) => {
+export const addMiwon = ({ initVal, config }: AddMiwon) => {
   const { reflect, subscribe, clear, getSubscriptions } = subscription()
 
   const {setState, getState} = createStore(initVal)
@@ -29,4 +29,3 @@ const addMiwon = ({ initVal, config }: AddMiwon) => {
   }
 }
 
-export default addMiwon
