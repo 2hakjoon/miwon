@@ -1,5 +1,5 @@
 const { schema, normalize } = require('normalizr')
-const { default: addMiwon } = require('./dist/addMiwon')
+const { default: addMiwon } = require('../dist/addMiwon')
 
 const {
   getState,
