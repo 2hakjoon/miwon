@@ -1,15 +1,7 @@
 const { schema, normalize } = require('normalizr')
 const { default: addMiwon } = require('../dist/addMiwon')
 
-const {
-  getState,
-  setState,
-  miwonQuery,
-  miwonMutation,
-  subscribe,
-  getSubscriptions,
-  clear
-} = addMiwon({
+const miwonStore = addMiwon({
   initVal: {},
   config: {
     baseURL: 'https://my-json-server.typicode.com'
