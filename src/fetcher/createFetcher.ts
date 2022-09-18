@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { FetcherRequestConfig } from '../types/createFetcher'
 
-const createFetcher = (config: FetcherRequestConfig) => {
+const createFetcher = (config?: FetcherRequestConfig) => {
   const fetch = axios.create(config)
 
   return {

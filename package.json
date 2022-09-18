@@ -6,7 +6,6 @@
   "repository": "https://github.com/2hakjoon/miwon",
   "bugs": "https://github.com/2hakjoon/miwon/issuses",
   "license": "MIT",
-  "main": "main.js",
   "keywords": [
     "state",
     "flux",
@@ -14,8 +13,13 @@
     "normalized cache",
     "cahce api"
   ],
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
   },
   "author": {
     "name": "Hak Joon Lee",
@@ -25,10 +29,12 @@
   "devDependencies": {
     "eslint": "^8.23.1",
     "prettier": "^2.7.1",
-    "typescript": "^4.8.3"
+    "rollup": "^2.79.0",
+    "rollup-plugin-typescript2": "^0.34.0"
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "normalizr": "^3.6.2"
+    "normalizr": "^3.6.2",
+    "typescript": "^4.8.3"
   }
 }
