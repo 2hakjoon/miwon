@@ -72,4 +72,7 @@ miwon.miwonQuery("/2hakjoon/miwon/posts", postsNormalizer).then(() =>
 - [ ] fetcher
   - [x] createFetcher
   - [ ] errorHandling
+- [ ] cahce
+  - [x] cache with normalized data 
+  - [ ] get cache with key
 - [x] normalizer
