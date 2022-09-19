@@ -6,13 +6,19 @@ import { AddMiwon } from './types/addMiwon'
 export const addMiwon = ({ initVal, config }: AddMiwon) => {
   const { reflect, subscribe, clear, getSubscriptions } = subscription()
 
-  const {setState, getState} = createStore(initVal)
+  const { setState, getState } = createStore(initVal)
 
   const fetcher = createFetcher(config)
 
-  const miwonQuery = async (url: string, normalizer: (res: any) => any) => {
+  const miwonQuery = async (
+    url: string,
+    key: string,
+    normalizer: (res: any) => any
+  ) => {
     const res = await fetcher.get(url)
-    return setState(normalizer(res))
+    const normalized = normalizer(res)
+    setState(normalized.entities)
+    return { [key]: normalized.result }
   }
 
   const miwonMutation = (url: string, body: { [k: string]: any }) => {
@@ -28,4 +34,3 @@ export const addMiwon = ({ initVal, config }: AddMiwon) => {
     getSubscriptions
   }
 }
-
