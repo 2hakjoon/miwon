@@ -10,15 +10,11 @@ export const addMiwon = ({ initVal, config }: AddMiwon) => {
 
   const fetcher = createFetcher(config)
 
-  const miwonQuery = async (
-    url: string,
-    key: string,
-    normalizer: (res: any) => any
-  ) => {
+  const miwonQuery = async (url: string, normalizer: (res: any) => any) => {
     const res = await fetcher.get(url)
     const normalized = normalizer(res)
     setState(normalized.entities)
-    return { [key]: normalized.result }
+    return normalized.result
   }
 
   const miwonMutation = (url: string, body: { [k: string]: any }) => {
