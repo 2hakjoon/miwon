@@ -1,10 +1,14 @@
 import createFetcher from './fetcher/createFetcher'
 import createStore from './store/createStore'
 import subscription from './subscription/subscription'
-import { AddMiwon } from './types/addMiwon'
+import { AddMiwonArgs, AddMiwonReturns } from './types/addMiwon'
 
-export const addMiwon = ({ initVal, config }: AddMiwon) => {
-  const { reflect, subscribe, clear, getSubscriptions } = subscription()
+export const addMiwon = ({
+  initVal,
+  config
+}: AddMiwonArgs): AddMiwonReturns => {
+  const { reflect, subscribe, clearSubscriptions, getSubscriptions } =
+    subscription()
 
   const { setState, getState } = createStore(initVal)
 
@@ -18,14 +22,17 @@ export const addMiwon = ({ initVal, config }: AddMiwon) => {
   }
 
   const miwonMutation = (url: string, body: { [k: string]: any }) => {
-    fetcher.post(url, body)
+    const res = fetcher.post(url, body)
+    return res
   }
 
   return {
     getState,
+    setState,
     miwonQuery,
     miwonMutation,
-    clear,
+    reflect,
+    clearSubscriptions,
     subscribe,
     getSubscriptions
   }
