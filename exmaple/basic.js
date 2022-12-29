@@ -1,5 +1,5 @@
 const { schema, normalize } = require('normalizr')
-const { default: addMiwon } = require('../dist/addMiwon')
+const { addMiwon } = require('../dist')
 
 const miwonStore = addMiwon({
   initVal: {},
@@ -16,9 +16,9 @@ const postsNormalizer = res => {
   })
 
   const posts = new schema.Array(postEntity)
-  return normalize(res, posts).entities
+  return normalize(res, posts)
 }
 
-miwonQuery('/2hakjoon/miwon/posts', postsNormalizer).then(() =>
-  console.log(getState())
-)
+miwonStore.miwonQuery('/2hakjoon/miwon/posts', postsNormalizer).then(() => {
+  console.log(miwonStore.getState())
+})
