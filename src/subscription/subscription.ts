@@ -4,7 +4,7 @@ function subscription(): Subscription {
   let first: Listener | null = null
   let last: Listener | null = null
 
-  const clear = () => {
+  const clearSubscriptions = () => {
     first = null
     last = null
   }
@@ -53,7 +53,7 @@ function subscription(): Subscription {
       }
     }
   }
-  return { reflect, subscribe, clear, getSubscriptions }
+  return { reflect, subscribe, clearSubscriptions, getSubscriptions }
 }
 
 export default subscription

@@ -7,6 +7,6 @@ export interface Listener {
 export interface Subscription {
   reflect: () => void
   subscribe: (arg: () => void) => () => void
-  clear: () => void
+  clearSubscriptions: () => void
   getSubscriptions: () => Listener[]
 }
