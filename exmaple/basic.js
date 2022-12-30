@@ -20,5 +20,26 @@ const postsNormalizer = res => {
 }
 
 miwonStore.miwonQuery('/2hakjoon/miwon/posts', postsNormalizer).then(() => {
-  console.log(miwonStore.getState())
+  // console.log(miwonStore.getState())
 })
+
+const articlesNormalizer = res => {
+  const commentEntity = new schema.Entity('comments')
+
+  const articles = new schema.Entity('articles', {
+    comments: [commentEntity]
+  })
+
+  const pagedArticles = {
+    nodes: [articles]
+  }
+  console.log(normalize(res, pagedArticles))
+
+  return normalize(res, pagedArticles)
+}
+
+miwonStore
+  .miwonQuery('/2hakjoon/miwon/articles', articlesNormalizer)
+  .then(() => {
+    console.log(miwonStore.getState()['articles'][3]['comments'])
+  })
