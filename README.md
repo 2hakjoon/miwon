@@ -1,16 +1,16 @@
 # Miwon
 
-Miwon is oriented to intergrated state container with api fetching and cache normalizing.   
+Miwon is oriented to intergrated state container with api fetching and cache normalizing.
 
 # Concept
 
 - Cache Normalizing like [Apollo Client](https://www.apollographql.com/docs/react)
 - Handling sever-side-data like [TanStack Query](https://tanstack.com/query/v4/docs/overview)
 
-
 # Notice
-* Miwon is a kind of seasoning for cook.
-* This library is experimental and unstable. (also, document is unkind)
+
+- Miwon is a kind of seasoning for cook.
+- This library is experimental and unstable. (also, document is unkind)
 
 # Installation
 
@@ -25,7 +25,7 @@ yarn add miwon
 ## 1. Add Miwon to your project
 
 ```javascript
-import { addMiwon } from "miwon";
+import { addMiwon } from 'miwon'
 
 const miwon = addMiwon({
   config: {
@@ -37,7 +37,7 @@ const miwon = addMiwon({
 ## 2. Build Normalizer.
 
 ```javascript
-import { schema, normalize } from "miwon";
+import { schema, normalize } from 'miwon'
 
 const postsNormalizer = (res: any) => {
   const commentEntity = new schema.Entity('comments')
@@ -51,28 +51,27 @@ const postsNormalizer = (res: any) => {
 }
 ```
 
+## 3. Get data with Normalizer.
 
-## 3. Get data with Normalizer.   
-   
 ```javascript
-miwon.miwonQuery("/2hakjoon/miwon/posts", postsNormalizer).then(() =>
-  console.log(getState()) // you can see normalized result which cached
-); 
-```   
+miwon.miwonQuery('/2hakjoon/miwon/posts', postsNormalizer).then(
+  () => console.log(getState()) // you can see normalized result which cached
+)
+```
 
 ## Todo
 
-- [ ] store
+- [x] store
   - [x] createStore
 - [x] subscription
   - [x] subscribe
   - [x] unsubscribe
   - [x] clear
   - [x] getSubscriptions
-- [ ] fetcher
+- [x] fetcher
   - [x] createFetcher
-  - [ ] errorHandling
-- [ ] cahce
-  - [x] cache with normalized data 
-  - [ ] get cache with key
+  - [x] errorHandling
+- [x] cahce
+  - [x] cache with normalized data
+  - [x] get cache with key
 - [x] normalizer
