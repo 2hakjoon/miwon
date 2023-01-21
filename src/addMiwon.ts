@@ -10,7 +10,8 @@ export const addMiwon = ({
   const { reflect, subscribe, clearSubscriptions, getSubscriptions } =
     subscription()
 
-  const { setState, getState } = createStore(initVal)
+  const { setState, getState, getFetchState, setFetchState, getAllStates } =
+    createStore(initVal)
 
   const fetcher = createFetcher(config)
 
@@ -34,6 +35,9 @@ export const addMiwon = ({
     reflect,
     clearSubscriptions,
     subscribe,
-    getSubscriptions
+    getSubscriptions,
+    getFetchState,
+    setFetchState,
+    getAllStates
   }
 }
