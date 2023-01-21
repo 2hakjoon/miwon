@@ -2,8 +2,10 @@ import { FetcherRequestConfig } from './createFetcher'
 import { Store } from './createStore'
 import { Subscription } from './subscription'
 
+export interface AddMiwonConfigs extends FetcherRequestConfig {}
+
 export interface AddMiwonArgs {
-  config?: FetcherRequestConfig
+  config?: AddMiwonConfigs
   initVal?: { [k: string]: any }
 }
 
