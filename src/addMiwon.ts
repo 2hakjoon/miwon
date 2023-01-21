@@ -15,6 +15,8 @@ export const addMiwon = ({
 
   const fetcher = createFetcher(config)
 
+  const getConfig = () => config
+
   const miwonQuery = async (url: string, normalizer: (res: any) => any) => {
     const res = await fetcher.get(url)
     const normalized = normalizer(res)
@@ -32,6 +34,7 @@ export const addMiwon = ({
     setState,
     miwonQuery,
     miwonMutation,
+    getConfig,
     reflect,
     clearSubscriptions,
     subscribe,
