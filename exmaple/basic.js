@@ -42,4 +42,13 @@ miwonStore
   .miwonQuery('/2hakjoon/miwon/articles', articlesNormalizer)
   .then(() => {
     console.log(miwonStore.getState()['articles'][3]['comments'])
+    console.log('miwonStore.getAllStates(): ', miwonStore.getAllStates())
   })
+
+console.log('miwonStore.getFetchState(): ', miwonStore.getFetchState())
+miwonStore.setFetchState({ test: 0 })
+console.log('miwonStore.getFetchState(): ', miwonStore.getFetchState())
+miwonStore.getConfig()
+console.log('miwonStore.getConfig(): ', miwonStore.getConfig())
+miwonStore.getAllStates()
+console.log('miwonStore.getAllStates(): ', miwonStore.getAllStates())
