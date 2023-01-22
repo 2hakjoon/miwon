@@ -21,7 +21,7 @@ export const addMiwon = ({
   ) => {
     const res = await fetcher()
     const normalized = normalizer(res)
-    setFetchState({ key: normalized.result })
+    setFetchState({ [key]: normalized.result })
     setState(normalized.entities)
     return normalized.result
   }
