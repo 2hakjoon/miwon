@@ -14,15 +14,18 @@ export const addMiwon = ({
 
   const getConfig = () => config
 
-  const miwonQuery = async (url: string, normalizer: (res: any) => any) => {
-    const res = await fetcher.get(url)
+  const miwonQuery = async (
+    fetcher: () => any,
+    normalizer: (res: any) => any
+  ) => {
+    const res = await fetcher()
     const normalized = normalizer(res)
     setState(normalized.entities)
     return normalized.result
   }
 
-  const miwonMutation = (url: string, body: { [k: string]: any }) => {
-    const res = fetcher.post(url, body)
+  const miwonMutation = async (fetcher: () => any) => {
+    const res = await fetcher()
     return res
   }
 

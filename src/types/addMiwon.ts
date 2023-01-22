@@ -9,7 +9,7 @@ export interface AddMiwonArgs {
 }
 
 export interface AddMiwonReturns extends Subscription, Store {
-  miwonQuery: (url: string, func: (res: any) => any) => any
-  miwonMutation: (url: string, body: any) => any
+  miwonQuery: (fetcher: () => any, func: (res: any) => any) => any
+  miwonMutation: (fetcher: () => any, body: any) => any
   getConfig: () => any
 }
