@@ -1,4 +1,3 @@
-import createFetcher from './fetcher/createFetcher'
 import createStore from './store/createStore'
 import subscription from './subscription/subscription'
 import { AddMiwonArgs, AddMiwonReturns } from './types/addMiwon'
@@ -12,8 +11,6 @@ export const addMiwon = ({
 
   const { setState, getState, getFetchState, setFetchState, getAllStates } =
     createStore(initVal)
-
-  const fetcher = createFetcher(config)
 
   const getConfig = () => config
 
