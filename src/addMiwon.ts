@@ -15,12 +15,13 @@ export const addMiwon = ({
   const getConfig = () => config
 
   const miwonQuery = async (
+    key: string,
     fetcher: () => any,
     normalizer: (res: any) => any
   ) => {
     const res = await fetcher()
     const normalized = normalizer(res)
-    setFetchState(normalized.result)
+    setFetchState({ key: normalized.result })
     setState(normalized.entities)
     return normalized.result
   }
