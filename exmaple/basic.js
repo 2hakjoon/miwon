@@ -1,3 +1,4 @@
+const { default: axios } = require('axios')
 const { schema, normalize } = require('normalizr')
 const { addMiwon } = require('../dist')
 
@@ -19,8 +20,19 @@ const postsNormalizer = res => {
   return normalize(res, posts)
 }
 
-miwonStore.miwonQuery('/2hakjoon/miwon/posts', postsNormalizer).then(() => {
+const caller = async () =>
+  axios
+    .get('https://my-json-server.typicode.com/2hakjoon/miwon/posts')
+    .then(res => {
+      console.log(res.data)
+      return res.data
+    })
+    .catch(err => console.log(err))
+
+miwonStore.miwonQuery(caller, postsNormalizer).then(() => {
   // console.log(miwonStore.getState())
+  miwonStore.getAllStates()
+  console.log('miwonStore.getAllStates(): ', miwonStore.getAllStates())
 })
 
 const articlesNormalizer = res => {
@@ -38,12 +50,19 @@ const articlesNormalizer = res => {
   return normalize(res, pagedArticles)
 }
 
-miwonStore
-  .miwonQuery('/2hakjoon/miwon/articles', articlesNormalizer)
-  .then(() => {
-    console.log(miwonStore.getState()['articles'][3]['comments'])
-    console.log('miwonStore.getAllStates(): ', miwonStore.getAllStates())
-  })
+// const caller2 = async () =>
+//   axios
+//     .get('https://my-json-server.typicode.com/2hakjoon/articles')
+//     .then(res => {
+//       console.log(res.data)
+//       return res.data
+//     })
+//     .catch(err => console.log(err))
+
+// miwonStore.miwonQuery(caller2, articlesNormalizer).then(() => {
+//   console.log(miwonStore.getState()['articles'][3]['comments'])
+//   console.log('miwonStore.getAllStates(): ', miwonStore.getAllStates())
+// })
 
 console.log('miwonStore.getFetchState(): ', miwonStore.getFetchState())
 miwonStore.setFetchState({ test: 0 })
