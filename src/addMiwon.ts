@@ -19,11 +19,24 @@ export const addMiwon = ({
     fetcher: () => any,
     normalizer: (res: any) => any
   ) => {
-    const res = await fetcher()
-    const normalized = normalizer(res)
-    setFetchState({ [key]: normalized.result })
-    setState(normalized.entities)
-    return normalized.result
+    try {
+      setFetchState({
+        [key]: { data: undefined, loading: true, error: undefined }
+      })
+      const res = await fetcher()
+      const normalized = normalizer(res)
+      setFetchState({
+        [key]: { data: normalized.result, loading: false, error: undefined }
+      })
+      setState(normalized.entities)
+
+      return normalized.result
+    } catch (e) {
+      setFetchState({
+        [key]: { data: undefined, loading: false, error: e }
+      })
+      throw e
+    }
   }
 
   const miwonMutation = async (fetcher: () => any) => {
