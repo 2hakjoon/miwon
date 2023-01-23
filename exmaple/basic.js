@@ -10,6 +10,8 @@ const miwonStore = addMiwon({
 })
 
 const postsNormalizer = res => {
+  console.log('res: ', res)
+
   const commentEntity = new schema.Entity('comments')
 
   const postEntity = new schema.Entity('posts', {
@@ -20,35 +22,36 @@ const postsNormalizer = res => {
   return normalize(res, posts)
 }
 
-const caller = async () =>
-  axios
-    .get('https://my-json-server.typicode.com/2hakjoon/miwon/posts')
-    .then(res => {
-      console.log(res.data)
-      return res.data
-    })
-    .catch(err => console.log(err))
+const caller = async () => {
+  try {
+    const res = await axios.get(
+      'https://my-json-server.typicode.com/2hakjoon/miwon/posts'
+    )
+    console.log(res.data)
+    return res
+  } catch (err) {
+    console.log(err)
+  }
+}
 
-miwonStore.miwonQuery(caller, postsNormalizer).then(() => {
-  // console.log(miwonStore.getState())
-  miwonStore.getAllStates()
+miwonStore.miwonQuery('posts', caller, postsNormalizer).then(() => {
   console.log('miwonStore.getAllStates(): ', miwonStore.getAllStates())
 })
 
-const articlesNormalizer = res => {
-  const commentEntity = new schema.Entity('comments')
+// const articlesNormalizer = res => {
+//   const commentEntity = new schema.Entity('comments')
 
-  const articles = new schema.Entity('articles', {
-    comments: [commentEntity]
-  })
+//   const articles = new schema.Entity('articles', {
+//     comments: [commentEntity]
+//   })
 
-  const pagedArticles = {
-    nodes: [articles]
-  }
-  console.log(normalize(res, pagedArticles))
+//   const pagedArticles = {
+//     nodes: [articles]
+//   }
+//   console.log(normalize(res, pagedArticles))
 
-  return normalize(res, pagedArticles)
-}
+//   return normalize(res, pagedArticles)
+// }
 
 // const caller2 = async () =>
 //   axios
