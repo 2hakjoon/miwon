@@ -5,7 +5,7 @@ import { AddMiwonArgs, AddMiwonReturns } from './types/addMiwon'
 export const addMiwon = ({
   initVal,
   config
-}: AddMiwonArgs): AddMiwonReturns => {
+}: AddMiwonArgs = {}): AddMiwonReturns => {
   const { reflect, subscribe, clearSubscriptions, getSubscriptions } =
     subscription()
 
