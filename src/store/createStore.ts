@@ -6,8 +6,16 @@ function createStore<T>(initState: T) {
     return state
   }
 
-  const setState = (payload?: { [k: string]: any }) => {
-    state = { ...state, ...payload }
+  const setState = (payload: { [k: string]: any }) => {
+    const willUpdateState = { ...state } as { [k: string]: any }
+    const keys = Object.keys(payload)
+    keys.forEach(key => {
+      willUpdateState[key] = {
+        ...willUpdateState[key],
+        ...payload[key]
+      }
+    })
+    state = { ...willUpdateState } as T
   }
 
   const getFetchState = () => {
