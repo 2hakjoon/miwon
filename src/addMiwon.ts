@@ -1,6 +1,10 @@
 import createStore from './store/createStore'
 import subscription from './subscription/subscription'
-import { AddMiwonArgs, AddMiwonReturns } from './types/addMiwon'
+import {
+  AddMiwonArgs,
+  AddMiwonConfigs,
+  AddMiwonReturns
+} from './types/addMiwon'
 
 export const addMiwon = ({
   initVal,
@@ -12,7 +16,12 @@ export const addMiwon = ({
   const { setState, getState, getFetchState, setFetchState, getAllStates } =
     createStore(initVal)
 
-  const getConfig = () => config
+  const getConfig = (): AddMiwonConfigs => {
+    return {
+      ...config,
+      minFetchInterval: 500
+    }
+  }
 
   const miwonQuery = async (
     key: string,

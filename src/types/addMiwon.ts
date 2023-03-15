@@ -1,12 +1,13 @@
 import { Store } from './createStore'
 import { Subscription } from './subscription'
 
-export interface AddMiwonConfigs {}
+export interface AddMiwonConfigs {
+  minFetchInterval?: number
+}
 
 export interface AddMiwonArgs {
   config?: AddMiwonConfigs
   initVal?: { [k: string]: any }
-  minFetchInterval?: number
 }
 
 export interface AddMiwonReturns extends Subscription, Store {
