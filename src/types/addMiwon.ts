@@ -6,6 +6,7 @@ export interface AddMiwonConfigs {}
 export interface AddMiwonArgs {
   config?: AddMiwonConfigs
   initVal?: { [k: string]: any }
+  minFetchInterval?: number
 }
 
 export interface AddMiwonReturns extends Subscription, Store {
